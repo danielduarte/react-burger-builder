@@ -1,13 +1,25 @@
 import React from 'react';
 
-import BuildControl from './BuildControl/BuildControl';
 import classes from './BuildControls.module.css';
+import BuildControl from './BuildControl/BuildControl';
 
-const buildControls = () => (
+const controls = [
+  { label: 'Salad', type: 'salad' },
+  { label: 'Bacon', type: 'bacon' },
+  { label: 'Cheese', type: 'cheese' },
+  { label: 'Meat', type: 'meat' },
+];
+
+const buildControls = (props) => (
   <div className={classes.BuildControls}>
-    <BuildControl />
-    <BuildControl />
-    <BuildControl />
+    {controls.map(control => (
+      <BuildControl
+        key={control.type}
+        label={control.label}
+        onAdd={() => props.onAddIngredient(control.type)}
+        onRemove={() => props.onRemoveIngredient(control.type)}
+        disabled={props.disabled[control.type]} />
+    ))}
   </div>
 );
 
