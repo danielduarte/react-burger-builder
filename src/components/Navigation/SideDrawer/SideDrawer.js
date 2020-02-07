@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import classes from './SideDrawer.module.css';
 
-const sideDrawer = (props) => {
-
+const sideDrawer = props => {
   const attachedClasses = [
     classes.SideDrawer,
     props.open ? classes.Open : classes.Close
@@ -25,6 +25,11 @@ const sideDrawer = (props) => {
       </div>
     </Fragment>
   );
+};
+
+sideDrawer.propTypes = {
+  open: PropTypes.bool,
+  closed: PropTypes.func,
 };
 
 export default sideDrawer;

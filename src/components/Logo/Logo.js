@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import classes from './Logo.module.css';
 import burgerLogo from '../../assets/images/burger-logo.png';
@@ -8,5 +9,9 @@ const logo = (props) => (
     <img src={burgerLogo} alt="Build Your Burger" />
   </div>
 );
+
+logo.propTypes = {
+  height: PropTypes.string,
+};
 
 export default logo;
