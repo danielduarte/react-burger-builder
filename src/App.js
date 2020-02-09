@@ -7,7 +7,7 @@ function App() {
   return (
     <div>
       <Layout>
-        <BurgerBuilder>content</BurgerBuilder>
+        <BurgerBuilder />
       </Layout>
     </div>
   );
