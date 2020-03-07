@@ -5,11 +5,15 @@ import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSumm
 class Checkout extends Component {
 
   state = {
-    ingredients: {
-      salad: 1,
-      tomato: 1
-    }
+    ingredients: {}
   };
+
+  componentDidMount() {
+    const searchParams = new URLSearchParams(this.props.location.search);
+    const ingredients = [...searchParams.entries()].reduce((acc, [ingredient, qty]) => ({...acc, [ingredient]: +qty}), {});
+
+    this.setState({ ingredients });
+  }
 
   onCheckoutCancelHandler = () => {
     this.props.history.goBack();

@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { Redirect } from 'react-router';
 
 import axios from '../../axios-orders';
 import Burger from '../../components/Burger/Burger';
@@ -103,7 +102,15 @@ class BurgerBuilder extends Component {
     //   .catch(error => {
     //     this.setState({ loading: false, purchasing: false });
     //   });
-    this.props.history.push('/checkout');
+
+    const queryString = '?' + Object.entries(this.state.ingredients).reduce((acc, [ingredient, qty]) => {
+      return acc + `&${encodeURIComponent(ingredient)}=${encodeURIComponent(qty)}`;
+    }, '').substr(1);
+
+    this.props.history.push({
+      pathname: '/checkout',
+      search: queryString,
+    });
   };
 
   render() {
